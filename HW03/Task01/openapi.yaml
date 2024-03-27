@@ -1,0 +1,60 @@
+swagger: "2.0"
+info:
+  title: mySampleAPI
+  description: coe453hw3.
+  version: 1.0.0
+
+host: task01-20932070.apigateway.coe453-hw03.cloud.goog
+basePath: /
+schemes:
+  - https
+  - http
+
+paths:
+  /add:
+    post:
+      operationId: addition
+      summary: add x and y.
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+      x-google-backend:
+        address: https://me-central1-coe453-hw03.cloudfunctions.net/add
+
+  /sub:
+    post:
+      operationId: subtraction
+      summary: sub x and y.
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+      x-google-backend:
+        address: https://me-central1-coe453-hw03.cloudfunctions.net/sub
+
+  /mul:
+    post:
+      operationId: mul
+      summary: mul x and y.
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+      x-google-backend:
+        address: https://me-central1-coe453-hw03.cloudfunctions.net/mul
+
+  /div:
+    post:
+      operationId: div
+      summary: div x and y.
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+      x-google-backend:
+        address: https://me-central1-coe453-hw03.cloudfunctions.net/div
