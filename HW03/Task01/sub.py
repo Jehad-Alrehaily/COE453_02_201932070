@@ -1,4 +1,5 @@
 import functions_framework
+import json
 
 
 @functions_framework.http
@@ -7,15 +8,19 @@ def subtract(request):
     request_json = request.get_json(silent=True)
     request_args = request.args
 
-    if request_json and 'num1' in request_json and 'num2' in request_json:
-        num1 = request_json['num1']
-        num2 = request_json['num2']
-        result = num1 - num2
-    elif request_args and 'num1' in request_args and 'num2' in request_args:
-        num1 = request_args['num1']
-        num2 = request_args['num2']
-        result = num1 - num2
+    if request_json and 'X' in request_json and 'Y' in request_json:
+        X = request_json['X']
+        Y = request_json['Y']
+        result = X - Y
+    elif request_args and 'X' in request_args and 'Y' in request_args:
+        X = request_args['X']
+        Y = request_args['Y']
+        result = X - Y
     else:
-        return 'Error: Please provide both "num1" and "num2" parameters.'
+        return 'Error: Please provide both "X" and "Y" parameters.'
 
-    return str(result)
+    return json.dumps({
+        "X": X,
+        "Y": Y,
+        "Result": result
+    })
